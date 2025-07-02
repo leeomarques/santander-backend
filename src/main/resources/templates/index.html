@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Santander Backend API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ec1c24 0%, #d71820 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .api-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .api-link {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .api-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .version {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .tech-stack {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-badges {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .api-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo" th:text="${title}">🏦 Santander Backend API</div>
+        <div class="subtitle" th:text="${description}">API RESTful criada para a Santander Dev Week 2025</div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <div class="feature-title">Gerenciamento de Usuários</div>
+                <div class="feature-description">CRUD completo para gerenciar usuários do sistema bancário</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <div class="feature-title">Contas e Cartões</div>
+                <div class="feature-description">Gestão de contas bancárias e cartões de crédito</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Features & News</div>
+                <div class="feature-description">Sistema de recursos e notícias personalizadas</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Documentação OpenAPI</div>
+                <div class="feature-description">Documentação interativa com Swagger UI</div>
+            </div>
+        </div>
+        
+        <div class="api-links">
+            <a href="/swagger-ui.html" class="api-link">📖 Documentação API</a>
+            <a href="/h2-console" class="api-link">🗄️ Console H2 (Somente em DEV)</a>
+            <a href="/swagger-ui.html" class="api-link">👥 Endpoint Users</a>
+        </div>
+        
+        <div class="tech-stack">
+            <h3>🛠️ Tecnologias Utilizadas</h3>
+            <div class="tech-badges">
+                <span class="tech-badge">Java 17</span>
+                <span class="tech-badge">Spring Boot 3.2.5</span>
+                <span class="tech-badge">Spring Data JPA</span>
+                <span class="tech-badge">H2 Database</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">OpenAPI/Swagger</span>
+                <span class="tech-badge">Thymeleaf</span>
+            </div>
+        </div>
+        
+        <div class="version">
+            <p>Versão <span th:text="${version}">1.0.0</span> | DIO - Digital Innovation One</p>
+        </div>
+    </div>
+</body>
+</html>
